@@ -6,6 +6,7 @@ const { mongoUrl } = require("./keys");
 const cors = require("cors");
 const path = require("path");
 
+
 require('./models/model');
 require('./models/post');
 
@@ -32,10 +33,10 @@ app.use(require("./routes/auth"));
 app.use(require("./routes/createPost"));
 app.use(require("./routes/user"));
 
-// serving the frontend
+// serving frontend
 app.use(express.static(path.join(__dirname, "./frontend/build")))
 
-app.get("*", (req,res) => {
+app.get("*", (req, res) => {
     res.sendFile(
         path.join(__dirname, "./frontend/build/index.html"),
         function(err){

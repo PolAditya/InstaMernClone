@@ -16,7 +16,7 @@ router.get('/user/:id', async (req, res) => {
       }
   
       const posts = await POST.find({ postedBy: req.params.id })
-        .populate("postedBy", "_id")
+        .populate("postedBy", "_id userName Photo")
         .populate("comments.postedBy", "id userName");
       
       res.status(200).json({ user, posts });
